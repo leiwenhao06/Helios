@@ -8,3 +8,7 @@ config/.env
 # 知识库隐私信息
 data/user_profiles
 
+# Python 缓存文件
+__pycache__/
+*.pyc
+*.pyo
