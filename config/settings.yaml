@@ -1,25 +1,35 @@
 agent:
-  name: "Helios"
-  mode: "react"
+  name: Helios
+  mode: react
+  max_iterations: 10
+  early_stopping: true
+  temperature: 0.8
 
-  model:
-    provider: "ollama"
-    name: "${OLLAMA_MODEL:deepseek-r1:7b}"
-    temperature: 0.8
-    max_tokens: 4096
+llm:
+    base_url: ${OLLAMA_BASE_URL}
+    model: ${OLLAMA_MODEL}
+    temperature: 0.8          # 此处 temperature 是 LLM 调用时的参数，可覆盖 agent 层级的参数
 
-  tools:
+embedding: 
+    model: ${EMBEDDING_MODEL}
+    base_url: ${OLLAMA_BASE_URL}  
 
-  memory:
+memory:
     short_term:
-      max_tokens: 4000
+      window_size: 10         # 保留轮数
+      summary_enabled: true   # 窗口满后是否自动摘要
     long_term:
-      enabled: true
-      db_path: "./data/long_term_memory"
-      collection: "helios_memory"
+      collection_name: helios_memory
+      persist_directory: data/long_term_memory
+      retrieval_top_k: 3
 
-rag:
-  embedding_model: "${EMBEDDING_MODEL:nomic-embed-text}"
-  chunk_size: 512
-  chunk_overlap: 64
-  top_k: 5
+tools:
+    enabled:
+      - calculator
+      - datetime
+      - file_read
+      - file_write
+      - file_search
+
+logging:
+    level: INFO

@@ -50,9 +50,8 @@ python main.py
 |------|------|--------|
 | `OLLAMA_BASE_URL` | Ollama 服务地址 | `http://localhost:11434` |
 | `OLLAMA_MODEL` | 对话模型 | `deepseek-r1:7b` |
-| `OLLAMA_TEMPERATURE` | 生成温度 | `0.8` |
-| `OLLAMA_MAX_TOKENS` | 最大输出 token | `4096` |
 | `EMBEDDING_MODEL` | 嵌入模型 | `nomic-embed-text` |
+配置好后记得将文件名改为 .env 适配代码
 
 ## 配置系统
 
