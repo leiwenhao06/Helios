@@ -1,0 +1,25 @@
+agent:
+  name: "Helios"
+  mode: "react"
+
+  model:
+    provider: "ollama"
+    name: "${OLLAMA_MODEL:deepseek-r1:7b}"
+    temperature: 0.8
+    max_tokens: 4096
+
+  tools:
+
+  memory:
+    short_term:
+      max_tokens: 4000
+    long_term:
+      enabled: true
+      db_path: "./data/long_term_memory"
+      collection: "helios_memory"
+
+rag:
+  embedding_model: "${EMBEDDING_MODEL:nomic-embed-text}"
+  chunk_size: 512
+  chunk_overlap: 64
+  top_k: 5

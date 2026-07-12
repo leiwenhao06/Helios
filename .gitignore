@@ -1,0 +1,10 @@
+# claude code 相关配置与记忆文件
+.claude/
+CLAUDE.md
+
+# .env
+config/.env
+
+# 知识库隐私信息
+data/user_profiles
+
